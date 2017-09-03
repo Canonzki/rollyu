@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="main-div">
@@ -101,7 +102,7 @@
                         }
                     });
                 }
-                //document.getElementsByClassName('main-div')[0].setAttribute('style','height:' + window.screen.height + 'px;width:' + window.screen.width + 'px;');
+                document.getElementsByClassName('main-div')[0].setAttribute('style','height:' + window.screen.height + 'px;width:' + window.screen.width + 'px;');
                 panalController.init();
             }
 
@@ -309,7 +310,8 @@
                 },
                 mouseOver:{
                     rollOver:function(){
-                        panalController.addClass(document.getElementById('roll'),'rollOver');
+                        if(!document.getElementById('roll').classList.contains('rollOver'))
+                            panalController.addClass(document.getElementById('roll'),'rollOver');
                     }
                 },
                 mouseOut:{
@@ -421,7 +423,7 @@
                     background-color: #ffffff;
                     width:34%;
                     height:5%;
-                    margin-left:33%
+                    margin-left:33%;
                 }
                 #resultDiv{
                     margin-left: 33%;
@@ -503,7 +505,7 @@
                 .count-count>div>div{
                     margin-top: 10%;
                     margin-bottom: 10%;
-                    font-size: 200%;
+                    font-size: 100%;
                 }
                 .count-count>div>div>span{
                     color: #20b2aa;
@@ -540,14 +542,14 @@
                     font-size: 100%;
                 }
                 #roll{
-                    margin-bottom: 2%;
+                    margin-bottom: 3%;
                     margin-left: 3%;
-                    margin-top: 2%;
+                    margin-top: 3%;
                     width: 94%;
-                    height: 10%;
+                    height: 12%;
                     border: 0;
                     outline:none;
-                    font-size:600%;
+                    font-size:250%;
                     background-color: #ffffff;
                     color: #20b2aa;
                     -webkit-transform: translateX(0);
@@ -563,12 +565,12 @@
                 .rollOver{
                     margin-bottom: 0px !important;
                     /* width: 16% !important; */
-                    height: 12% !important;
+                    height: 13% !important;
                 }
                 .bottom{
                     background-color: #ffffff;
                     width:94%;
-                    height:5%;
+                    height:8%;
                     margin-left:3%
                 }
                 #resultDiv{
@@ -576,7 +578,7 @@
                     width: 94%;
                     background-color: #ffffff;
                     color: #20b2aa;
-                    font-size: 200%;
+                    font-size: 100%;
                 }
                 #resultTable{
                     margin-left: 10%;
@@ -615,7 +617,7 @@
                 }
                 #materials{
                     background-color: #ffffff;
-                    font-size: 200%;
+                    font-size: 100%;
                     width:94%;
                     height:3%;
                     margin-left:3%;
