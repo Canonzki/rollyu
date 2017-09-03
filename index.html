@@ -86,6 +86,21 @@
                     flags += pattern.multiline ? 'm' : '';
                     return new RegExp(pattern.source, flags);
                 };
+                if(window.screen.width<1023){
+                    document.addEventListener('touchstart',function(e){
+                        var obj;
+                        if(!event) event = window.event;
+                        if(event.target) obj = event.target;
+                        else if(event.srcElement) obj = event.srcElement;
+                        if (obj.nodeType == 3) obj = obj.parentNode;
+                        console.log(obj);
+                        var ev = e||event;
+                        if(obj.id==='roll'){
+                            panalController.mouseOver.rollOver();
+                            window.setTimeout(function(){panalController.mouseOut.rollOut();},500);
+                        }
+                    });
+                }
                 //document.getElementsByClassName('main-div')[0].setAttribute('style','height:' + window.screen.height + 'px;width:' + window.screen.width + 'px;');
                 panalController.init();
             }
@@ -488,6 +503,7 @@
                 .count-count>div>div{
                     margin-top: 10%;
                     margin-bottom: 10%;
+                    font-size: 200%;
                 }
                 .count-count>div>div>span{
                     color: #20b2aa;
@@ -506,6 +522,7 @@
                     -webkit-appearance:none;
                     padding-right: 14px;
                     outline:none;
+                    font-size: 100%;
                 }
                 .count-count>div>div>select>option{
                     text-align: center;  
@@ -520,6 +537,7 @@
                     -webkit-appearance:none;
                     padding-right: 14px;
                     outline:none;
+                    font-size: 100%;
                 }
                 #roll{
                     margin-bottom: 2%;
@@ -529,7 +547,7 @@
                     height: 10%;
                     border: 0;
                     outline:none;
-                    font-size:300%;
+                    font-size:600%;
                     background-color: #ffffff;
                     color: #20b2aa;
                     -webkit-transform: translateX(0);
@@ -558,6 +576,7 @@
                     width: 94%;
                     background-color: #ffffff;
                     color: #20b2aa;
+                    font-size: 200%;
                 }
                 #resultTable{
                     margin-left: 10%;
