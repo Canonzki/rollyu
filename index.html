@@ -86,7 +86,7 @@
                     flags += pattern.multiline ? 'm' : '';
                     return new RegExp(pattern.source, flags);
                 };
-                document.getElementsByClassName('main-div')[0].setAttribute('style','height:' + window.screen.height + 'px;width:' + window.screen.width + 'px;');
+                //document.getElementsByClassName('main-div')[0].setAttribute('style','height:' + window.screen.height + 'px;width:' + window.screen.width + 'px;');
                 panalController.init();
             }
 
@@ -314,6 +314,9 @@
                 margin: 0px;
                 padding: 0px;
             }
+            body{
+                background-color: #20b2aa;
+            }
             @media only screen and (min-width: 1029px){
                 input[type=button] {
                     -moz-appearance:button; /* Firefox */
@@ -526,7 +529,7 @@
                     height: 10%;
                     border: 0;
                     outline:none;
-                    font-size:400%;
+                    font-size:300%;
                     background-color: #ffffff;
                     color: #20b2aa;
                     -webkit-transform: translateX(0);
