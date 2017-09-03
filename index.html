@@ -27,7 +27,7 @@
                 </table>
             </div>
             <div id="materials"><div></div></div>
-            <div style="background-color: #ffffff;width:34%;height:5%;margin-left:33%"></div>
+            <div class="bottom"></div>
         </div>
         <script>
             window.onload=function(){
@@ -314,143 +314,295 @@
                 margin: 0px;
                 padding: 0px;
             }
-            input[type=button] {
-                -moz-appearance:button; /* Firefox */
-                -webkit-appearance:button; /* Safari 和 Chrome */
-            }
-            .main-div{
-                background-color: #20b2aa;
-            }
-            .buttonOver{
-                -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                box-shadow: 3px 3px 3px rgba(0,0,0,.4);
-            }
-            .count-count{
-                margin-left: 33%;
-                width: 34%;
-                background-color: #ffffff;
-            }
-            .count-count>div{
-                display:inline-block !important;
-                margin-left: 10%;
-                width: 35%;
-            }
-            .count-count>div>div{
-                margin-top: 10%;
-                margin-bottom: 10%;
-            }
-            .count-count>div>div>span{
-                color: #20b2aa;
-            }
-            .count-count>div>div>select{
-                text-align: center;  
-                -moz-appearance:select; /* Firefox */
-                -webkit-appearance:select; /* Safari 和 Chrome */
-                display:inline;
-                width: 50%;
-                height: 1%;
-                border: solid 1px #20b2aa;
-                color: #20b2aa;
-                appearance:none;
-                -moz-appearance:none;
-                -webkit-appearance:none;
-                padding-right: 14px;
-                outline:none;
-            }
-            .count-count>div>div>select>option{
-                text-align: center;  
-                -moz-appearance:option; /* Firefox */
-                -webkit-appearance:option; /* Safari 和 Chrome */
-                width: 20%;
-                height: 1%;
-                border: solid 1px #20b2aa;
-                color: #20b2aa;
-                appearance:none;
-                -moz-appearance:none;
-                -webkit-appearance:none;
-                padding-right: 14px;
-                outline:none;
-            }
-            #roll{
-                margin-bottom: 2%;
-                margin-left: 33%;
-                margin-top: 2%;
-                width: 34%;
-                height: 10%;
-                border: 0;
-                outline:none;
-                font-size:400%;
-                background-color: #ffffff;
-                color: #20b2aa;
-                -webkit-transform: translateX(0);
-                -moz-transform: translateX(0);
-                -ms-transform: translateX(0);
-                -o-transform: translateX(0);
-                transform: translateX(0);
-                -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
-                -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
-                transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
-                will-change: margin,height,width,transform;
-            }
-            .rollOver{
-                margin-bottom: 0px !important;
-                /* width: 16% !important; */
-                height: 12% !important;
-            }
-            #resultDiv{
-                margin-left: 33%;
-                width: 34%;
-                background-color: #ffffff;
-                color: #20b2aa;
-            }
-            #resultTable{
-                margin-left: 10%;
-                border-spacing: 0;
-                border-collapse:collapse;
-                table-layout: fixed;
-                width: 80%;
-            }
-            #resultTable>tbody>tr{
-                width: 100%;
-            }
-            #resultTable>tbody>tr:nth-child(1){
-                border-bottom: solid 1px #20b2aa;
-                table-layout: fixed !important;
-            }
-            #resultTable>tbody>tr:last-child{
-                border-bottom: solid 1px #20b2aa;
+            @media only screen and (min-width: 1029px){
+                input[type=button] {
+                    -moz-appearance:button; /* Firefox */
+                    -webkit-appearance:button; /* Safari 和 Chrome */
+                }
+                .main-div{
+                    background-color: #20b2aa;
+                }
+                .buttonOver{
+                    -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                    -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                    box-shadow: 3px 3px 3px rgba(0,0,0,.4);
+                }
+                .count-count{
+                    margin-left: 33%;
+                    width: 34%;
+                    background-color: #ffffff;
+                }
+                .count-count>div{
+                    display:inline-block !important;
+                    margin-left: 10%;
+                    width: 35%;
+                }
+                .count-count>div>div{
+                    margin-top: 10%;
+                    margin-bottom: 10%;
+                }
+                .count-count>div>div>span{
+                    color: #20b2aa;
+                }
+                .count-count>div>div>select{
+                    text-align: center;  
+                    -moz-appearance:select; /* Firefox */
+                    -webkit-appearance:select; /* Safari 和 Chrome */
+                    display:inline;
+                    width: 50%;
+                    height: 1%;
+                    border: solid 1px #20b2aa;
+                    color: #20b2aa;
+                    appearance:none;
+                    -moz-appearance:none;
+                    -webkit-appearance:none;
+                    padding-right: 14px;
+                    outline:none;
+                }
+                .count-count>div>div>select>option{
+                    text-align: center;  
+                    -moz-appearance:option; /* Firefox */
+                    -webkit-appearance:option; /* Safari 和 Chrome */
+                    width: 20%;
+                    height: 1%;
+                    border: solid 1px #20b2aa;
+                    color: #20b2aa;
+                    appearance:none;
+                    -moz-appearance:none;
+                    -webkit-appearance:none;
+                    padding-right: 14px;
+                    outline:none;
+                }
+                #roll{
+                    margin-bottom: 2%;
+                    margin-left: 33%;
+                    margin-top: 2%;
+                    width: 34%;
+                    height: 10%;
+                    border: 0;
+                    outline:none;
+                    font-size:400%;
+                    background-color: #ffffff;
+                    color: #20b2aa;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                    -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
+                    -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
+                    transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
+                    will-change: margin,height,width,transform;
+                }
+                .rollOver{
+                    margin-bottom: 0px !important;
+                    /* width: 16% !important; */
+                    height: 12% !important;
+                }
+                .bottom{
+                    background-color: #ffffff;
+                    width:34%;
+                    height:5%;
+                    margin-left:33%
+                }
+                #resultDiv{
+                    margin-left: 33%;
+                    width: 34%;
+                    background-color: #ffffff;
+                    color: #20b2aa;
+                }
+                #resultTable{
+                    margin-left: 10%;
+                    border-spacing: 0;
+                    border-collapse:collapse;
+                    table-layout: fixed;
+                    width: 80%;
+                }
+                #resultTable>tbody>tr{
+                    width: 100%;
+                }
+                #resultTable>tbody>tr:nth-child(1){
+                    border-bottom: solid 1px #20b2aa;
+                    table-layout: fixed !important;
+                }
+                #resultTable>tbody>tr:last-child{
+                    border-bottom: solid 1px #20b2aa;
 
+                }
+                #resultTable>tbody>tr:last-child>td{
+                    width: 100% !important;
+                    table-layout: auto;
+                }
+                #resultTable>tbody>tr:last-child>td>div{
+                    width: 100% !important;
+                }
+                #resultTable>tbody>tr>td{
+                    width: 25%;
+                    text-align: center;
+                    vertical-align:middle;
+                    display:table-cell; 
+                }
+                #resultTable>tbody>tr>td>div{
+                    margin-top: 8%;
+                    margin-bottom: 8%;
+                }
+                #materials{
+                    background-color: #ffffff;
+                    width:34%;
+                    height:3%;
+                    margin-left:33%;
+                    color:#20b2aa;
+                    padding-top: 1%;
+                }
+                #materials>div{
+                    margin-left: 10%;
+                    width: 80%;
+                }
             }
-            #resultTable>tbody>tr:last-child>td{
-                width: 100% !important;
-                table-layout: auto;
-            }
-            #resultTable>tbody>tr:last-child>td>div{
-                width: 100% !important;
-            }
-            #resultTable>tbody>tr>td{
-                width: 25%;
-                text-align: center;
-                vertical-align:middle;
-                display:table-cell; 
-            }
-            #resultTable>tbody>tr>td>div{
-                margin-top: 8%;
-                margin-bottom: 8%;
-            }
-            #materials{
-                background-color: #ffffff;
-                width:34%;
-                height:3%;
-                margin-left:33%;
-                color:#20b2aa;
-                margin-left: 33%;
-                padding-top: 1%;
-            }
-            #materials>div{
-                margin-left: 10%;
-                width: 80%;
+            @media only screen and (min-width: 321px) and (max-width: 1024px){
+                input[type=button] {
+                    -moz-appearance:button; /* Firefox */
+                    -webkit-appearance:button; /* Safari 和 Chrome */
+                }
+                .main-div{
+                    background-color: #20b2aa;
+                }
+                .buttonOver{
+                    -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                    -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                    box-shadow: 3px 3px 3px rgba(0,0,0,.4);
+                }
+                .count-count{
+                    margin-left: 3%;
+                    width: 94%;
+                    background-color: #ffffff;
+                }
+                .count-count>div{
+                    display:inline-block !important;
+                    margin-left: 10%;
+                    width: 35%;
+                }
+                .count-count>div>div{
+                    margin-top: 10%;
+                    margin-bottom: 10%;
+                }
+                .count-count>div>div>span{
+                    color: #20b2aa;
+                }
+                .count-count>div>div>select{
+                    text-align: center;  
+                    -moz-appearance:select; /* Firefox */
+                    -webkit-appearance:select; /* Safari 和 Chrome */
+                    display:inline;
+                    width: auto;
+                    height: 1%;
+                    border: solid 1px #20b2aa;
+                    color: #20b2aa;
+                    appearance:none;
+                    -moz-appearance:none;
+                    -webkit-appearance:none;
+                    padding-right: 14px;
+                    outline:none;
+                }
+                .count-count>div>div>select>option{
+                    text-align: center;  
+                    -moz-appearance:option; /* Firefox */
+                    -webkit-appearance:option; /* Safari 和 Chrome */
+                    width: 20%;
+                    height: 1%;
+                    border: solid 1px #20b2aa;
+                    color: #20b2aa;
+                    appearance:none;
+                    -moz-appearance:none;
+                    -webkit-appearance:none;
+                    padding-right: 14px;
+                    outline:none;
+                }
+                #roll{
+                    margin-bottom: 2%;
+                    margin-left: 3%;
+                    margin-top: 2%;
+                    width: 94%;
+                    height: 10%;
+                    border: 0;
+                    outline:none;
+                    font-size:400%;
+                    background-color: #ffffff;
+                    color: #20b2aa;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                    -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
+                    -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
+                    transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
+                    will-change: margin,height,width,transform;
+                }
+                .rollOver{
+                    margin-bottom: 0px !important;
+                    /* width: 16% !important; */
+                    height: 12% !important;
+                }
+                .bottom{
+                    background-color: #ffffff;
+                    width:94%;
+                    height:5%;
+                    margin-left:3%
+                }
+                #resultDiv{
+                    margin-left: 3%;
+                    width: 94%;
+                    background-color: #ffffff;
+                    color: #20b2aa;
+                }
+                #resultTable{
+                    margin-left: 10%;
+                    border-spacing: 0;
+                    border-collapse:collapse;
+                    table-layout: fixed;
+                    width: 80%;
+                }
+                #resultTable>tbody>tr{
+                    width: 100%;
+                }
+                #resultTable>tbody>tr:nth-child(1){
+                    border-bottom: solid 1px #20b2aa;
+                    table-layout: fixed !important;
+                }
+                #resultTable>tbody>tr:last-child{
+                    border-bottom: solid 1px #20b2aa;
+
+                }
+                #resultTable>tbody>tr:last-child>td{
+                    width: 100% !important;
+                    table-layout: auto;
+                }
+                #resultTable>tbody>tr:last-child>td>div{
+                    width: 100% !important;
+                }
+                #resultTable>tbody>tr>td{
+                    width: 25%;
+                    text-align: center;
+                    vertical-align:middle;
+                    display:table-cell; 
+                }
+                #resultTable>tbody>tr>td>div{
+                    margin-top: 8%;
+                    margin-bottom: 8%;
+                }
+                #materials{
+                    background-color: #ffffff;
+                    width:94%;
+                    height:3%;
+                    margin-left:3%;
+                    color:#20b2aa;
+                    padding-top: 1%;
+                }
+                #materials>div{
+                    margin-left: 10%;
+                    width: 80%;
+                }
             }
         </style>
     </body>
