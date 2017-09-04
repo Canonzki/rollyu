@@ -231,9 +231,8 @@
                     }
                     return false;
                 },
-                mouseclick:{
-                    rollClick:function(){
-                        var divStart = '<div>'
+                roll:function(){
+                    var divStart = '<div>'
                         var divEnd = '</div>'
                         var opts = {}
                         opts.soup = document.getElementById("soup-select").selectedIndex;
@@ -306,8 +305,16 @@
                         divMaterials.innerHTML = eles;
                         document.getElementById('materials').innerHTML = "";
                         document.getElementById('materials').appendChild(divMaterials);
+                },
+                mouseclick:{
+                    rollClick:function(){
+                        if(window.screen.width<=1025)
+                            window.setTimeout(panalController.roll,400);
+                        else
+                            panalController.roll();
                     },
                 },
+
                 mouseOver:{
                     rollOver:function(){
                         if(!document.getElementById('roll').classList.contains('rollOver'))
@@ -482,7 +489,7 @@
             @media only screen and (min-width: 240px) and (max-width: 1024px){
                 input[type=button] {
                     -moz-appearance:button; /* Firefox */
-                    -webkit-appearance:button; /* Safari 和 Chrome */
+                    -webkit-appearance:none; /* Safari 和 Chrome */
                 }
                 .main-div{
                     background-color: #20b2aa;
