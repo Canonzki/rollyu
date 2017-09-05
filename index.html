@@ -240,11 +240,18 @@
                     panalController.addClass(obj,'zeroHeight');
                 },
                 unsetObjZoreHeight(obj){
+                    panalController.addClass(obj,'transDiv');
                     panalController.removeClass(obj,'zeroHeight');
                 },
                 heightTrans(obj){
                     panalController.setObjZoreHeight(obj);
                     window.setTimeout(panalController.unsetObjZoreHeight.bind(null,obj),299);
+                },
+                hiddenResult(){
+                    var tableEles = document.getElementsByClassName('tableEle');
+                    for(index in tableEles){
+                        panalController.addClass(tableEles[index],'zeroHeight');
+                    }
                 },
                 cleanResult(){
                     var divStart = '<div>'
@@ -265,15 +272,18 @@
                     document.getElementById('resultTbody').innerHTML = '';
                     document.getElementById('resultTbody').appendChild(tr);
                 },
+                
                 addResult(oneDish){
-                    var divStart = '<div>'
-                    var divEnd = '</div>'
                     trDish = document.createElement("tr");
                     tdType = document.createElement("td");
                     divType = document.createElement("div");
+                    panalController.addClass(divType,'tableEle');
                     divNum = document.createElement("div");
+                    panalController.addClass(divNum,'tableEle');
                     divName = document.createElement("div");
+                    panalController.addClass(divName,'tableEle');
                     divEle = document.createElement("div");
+                    panalController.addClass(divEle,'tableEle');
                     if(oneDish.type === dishType.soup){
                         divType.innerHTML = '汤菜';
                     }
@@ -322,10 +332,7 @@
                     window.setTimeout(panalController.heightTrans.bind(null,divEle),1);
                     
                 },
-                roll:function(){
-                    panalController.cleanResult();
-                    var divStart = '<div>'
-                    var divEnd = '</div>'
+                addResults(){
                     var opts = {}
                     opts.soup = document.getElementById("soup-select").selectedIndex;
                     opts.stirfry = document.getElementById("stirfry-select").selectedIndex;
@@ -351,10 +358,20 @@
                     document.getElementById('materials').innerHTML = "";
                     document.getElementById('materials').appendChild(divMaterials);
                 },
+                roll:function(){
+                    panalController.hiddenResult();
+                    if(window.screen.width<=1025)
+                        window.setTimeout(function(){panalController.cleanResult();
+                        panalController.addResults();},299);
+                    else
+                        window.setTimeout(function(){panalController.cleanResult();
+                        panalController.addResults();},499);
+                    
+                },
                 mouseclick:{
                     rollClick:function(){
                         if(window.screen.width<=1025)
-                            window.setTimeout(panalController.roll,400);
+                            window.setTimeout(panalController.roll,300);
                         else
                             panalController.roll();
                     },
@@ -526,6 +543,8 @@
                     margin-top: 8%;
                     margin-bottom: 8%;
                     overflow: hidden;
+                }
+                #resultTable>tbody>tr>td>div.transDiv{
                     -webkit-transform: translateX(0);
                     -moz-transform: translateX(0);
                     -ms-transform: translateX(0);
@@ -690,14 +709,16 @@
                     margin-top: 8%;
                     margin-bottom: 8%;
                     overflow: hidden;
+                }
+                #resultTable>tbody>tr>td>div.transDiv{
                     -webkit-transform: translateX(0);
                     -moz-transform: translateX(0);
                     -ms-transform: translateX(0);
                     -o-transform: translateX(0);
                     transform: translateX(0);
-                    -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
-                    -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
-                    transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
+                    -webkit-transition: -webkit-margin 0.3s,-webkit-height 0.3s,-webkit-width 0.3s,-webkit-transform 0.3s;
+                    -moz-transition: -moz-margin 0.3s,-moz-height 0.3s,-moz-width 0.3s,-moz-transform 0.3s;
+                    transition: margin 0.3s,height 0.3s,width 0.3s,transform 0.3s;
                     will-change: margin,height,width,transform;
                 }
                 #materials{
@@ -713,6 +734,7 @@
                     margin-left: 10%;
                     width: 80%;
                 }
+
             }
         </style>
     </body>
