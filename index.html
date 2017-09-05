@@ -87,6 +87,7 @@
                     flags += pattern.multiline ? 'm' : '';
                     return new RegExp(pattern.source, flags);
                 };
+                Function.prototype.bind();
                 if(window.screen.width<1023){
                     document.addEventListener('touchstart',function(e){
                         var obj;
@@ -231,6 +232,20 @@
                     }
                     return false;
                 },
+                setObjHeight(obj){
+                    obj.style.cssText = "height:" + obj.offsetHeight.toString() + "px;";
+                },
+                setObjZoreHeight(obj){
+                    panalController.setObjHeight(obj);
+                    panalController.addClass(obj,'zeroHeight');
+                },
+                unsetObjZoreHeight(obj){
+                    panalController.removeClass(obj,'zeroHeight');
+                },
+                heightTrans(obj){
+                    panalController.setObjZoreHeight(obj);
+                    window.setTimeout(panalController.unsetObjZoreHeight.bind(null,obj),299);
+                },
                 cleanResult(){
                     var divStart = '<div>'
                     var divEnd = '</div>'
@@ -255,21 +270,36 @@
                     var divEnd = '</div>'
                     trDish = document.createElement("tr");
                     tdType = document.createElement("td");
-                    if(oneDish.type === dishType.soup)
-                        tdType.innerHTML = divStart + '汤菜' + divEnd;
-                    else if(oneDish.type === dishType.stirfry)
-                        tdType.innerHTML = divStart + '炒菜' + divEnd;
-                    else if(oneDish.type === dishType.salad)
-                        tdType.innerHTML = divStart + '凉菜' + divEnd;
-                    else if (oneDish.type === dishType.steamed)
-                        tdType.innerHTML = divStart + '蒸菜' + divEnd;
-                    else
-                        tdType.innerHTML = '未知';
-                    tdNum = document.createElement("td");
-                    tdNum.innerHTML = divStart + oneDish.id + divEnd;
+                    divType = document.createElement("div");
+                    divNum = document.createElement("div");
+                    divName = document.createElement("div");
+                    divEle = document.createElement("div");
+                    if(oneDish.type === dishType.soup){
+                        divType.innerHTML = '汤菜';
+                    }
+                    else if(oneDish.type === dishType.stirfry){
+                        divType.innerHTML = '炒菜';
+                    }
+                    else if(oneDish.type === dishType.salad){
+                        divType.innerHTML = '凉菜';
+                    }
+                    else if (oneDish.type === dishType.steamed){
+                        divType.innerHTML = '蒸菜';
+                    }
+                    else{
+                        divType.innerHTML = '未知';
+                    }
+                    
+                    tdType.appendChild(divType);
+                    
 
+                    divNum.innerHTML = oneDish.id;
+                    tdNum = document.createElement("td");
+                    tdNum.appendChild(divNum);
+
+                    divName.innerHTML = oneDish.name;
                     tdName = document.createElement("td");
-                    tdName.innerHTML = divStart + oneDish.name + divEnd;
+                    tdName.appendChild(divName);
 
                     var ele = "";
                     for(var i = 0; i < oneDish.material.length;i++){
@@ -277,14 +307,20 @@
                     }
                     ele = ele.substring(1,ele.length);
                     materials.push.apply(materials,oneDish.material);
-                    tdEle = document.createElement("td");
-                    tdEle.innerHTML = divStart + ele + divEnd;
 
+                    divEle.innerHTML = ele;
+                    tdEle = document.createElement("td");
+                    tdEle.appendChild(divEle);
                     trDish.appendChild(tdType);
                     trDish.appendChild(tdNum);
                     trDish.appendChild(tdName);
                     trDish.appendChild(tdEle);
                     document.getElementById('resultTbody').appendChild(trDish);
+                    window.setTimeout(panalController.heightTrans.bind(null,divType),1);
+                    window.setTimeout(panalController.heightTrans.bind(null,divNum),1);
+                    window.setTimeout(panalController.heightTrans.bind(null,divName),1);
+                    window.setTimeout(panalController.heightTrans.bind(null,divEle),1);
+                    
                 },
                 roll:function(){
                     panalController.cleanResult();
@@ -350,8 +386,14 @@
             body{
                 background-color: #20b2aa;
             }
+            .zeroHeight{
+                height: 0px !important;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
             @media only screen and (min-width: 1025px){
                 input[type=button] {
+                    cursor: pointer;
                     -moz-appearance:button; /* Firefox */
                     -webkit-appearance:button; /* Safari 和 Chrome */
                 }
@@ -381,6 +423,7 @@
                     color: #20b2aa;
                 }
                 .count-count>div>div>select{
+                    cursor: pointer;
                     text-align: center;  
                     -moz-appearance:select; /* Firefox */
                     -webkit-appearance:select; /* Safari 和 Chrome */
@@ -396,6 +439,7 @@
                     outline:none;
                 }
                 .count-count>div>div>select>option{
+                    cursor: pointer;
                     text-align: center;  
                     -moz-appearance:option; /* Firefox */
                     -webkit-appearance:option; /* Safari 和 Chrome */
@@ -481,6 +525,16 @@
                 #resultTable>tbody>tr>td>div{
                     margin-top: 8%;
                     margin-bottom: 8%;
+                    overflow: hidden;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                    -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
+                    -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
+                    transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
+                    will-change: margin,height,width,transform;
                 }
                 #materials{
                     background-color: #ffffff;
@@ -497,6 +551,7 @@
             }
             @media only screen and (min-width: 240px) and (max-width: 1024px){
                 input[type=button] {
+                    cursor: pointer;
                     -moz-appearance:none; /* Firefox */
                     -webkit-appearance:none; /* Safari 和 Chrome */
                     border-radius: 0;
@@ -528,6 +583,7 @@
                     color: #20b2aa;
                 }
                 .count-count>div>div>select{
+                    cursor: pointer;
                     text-align: center;  
                     -moz-appearance:select; /* Firefox */
                     -webkit-appearance:select; /* Safari 和 Chrome */
@@ -545,6 +601,7 @@
                     font-size: 100%;
                 }
                 .count-count>div>div>select>option{
+                    cursor: pointer;
                     text-align: center;  
                     -moz-appearance:option; /* Firefox */
                     -webkit-appearance:option; /* Safari 和 Chrome */
@@ -632,6 +689,16 @@
                 #resultTable>tbody>tr>td>div{
                     margin-top: 8%;
                     margin-bottom: 8%;
+                    overflow: hidden;
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0);
+                    -webkit-transition: -webkit-margin 0.4s,-webkit-height 0.4s,-webkit-width 0.4s,-webkit-transform 0.4s;
+                    -moz-transition: -moz-margin 0.4s,-moz-height 0.4s,-moz-width 0.4s,-moz-transform 0.4s;
+                    transition: margin 0.4s,height 0.4s,width 0.4s,transform 0.4s;
+                    will-change: margin,height,width,transform;
                 }
                 #materials{
                     background-color: #ffffff;
