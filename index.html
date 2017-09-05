@@ -231,80 +231,89 @@
                     }
                     return false;
                 },
-                roll:function(){
+                cleanResult(){
                     var divStart = '<div>'
-                        var divEnd = '</div>'
-                        var opts = {}
-                        opts.soup = document.getElementById("soup-select").selectedIndex;
-                        opts.stirfry = document.getElementById("stirfry-select").selectedIndex;
-                        opts.salad = document.getElementById("salad-select").selectedIndex;
-                        opts.steamed = document.getElementById("steamed-select").selectedIndex;
-                        results = data.getDishList(opts);
-                        var tr = document.createElement("tr");
-                        var td = document.createElement("td");
-                        td.innerHTML = divStart + '分类' + divEnd;
-                        tr.appendChild(td);
-                        td = document.createElement("td");
-                        td.innerHTML = divStart + '编号' + divEnd;
-                        tr.appendChild(td);
-                        td = document.createElement("td");
-                        td.innerHTML = divStart + '名称' + divEnd;
-                        tr.appendChild(td);
-                        td = document.createElement("td");
-                        td.innerHTML = divStart + '食材' + divEnd;
-                        tr.appendChild(td);
-                        document.getElementById('resultTbody').innerHTML = '';
-                        document.getElementById('resultTbody').appendChild(tr);
-                        dishList = [];
-                        for(result in results){
-                            dishList = results[result].reduce(reduceFun,dishList);
-                        }
-                        
-                        materials = [];
-                        for(var i=0;i<dishList.length;i++){
-                            trDish = document.createElement("tr");
-                            tdType = document.createElement("td");
-                            if(dishList[i].type === dishType.soup)
-                                tdType.innerHTML = divStart + '汤菜' + divEnd;
-                            else if(dishList[i].type === dishType.stirfry)
-                                tdType.innerHTML = divStart + '炒菜' + divEnd;
-                            else if(dishList[i].type === dishType.salad)
-                                tdType.innerHTML = divStart + '凉菜' + divEnd;
-                            else if (dishList[i].type === dishType.steamed)
-                                tdType.innerHTML = divStart + '蒸菜' + divEnd;
-                            else
-                                tdType.innerHTML = '未知';
-                            tdNum = document.createElement("td");
-                            tdNum.innerHTML = divStart + dishList[i].id + divEnd;
-    
-                            tdName = document.createElement("td");
-                            tdName.innerHTML = divStart + dishList[i].name + divEnd;
-    
-                            var ele = "";
-                            for(var j = 0; j < dishList[i].material.length;j++){
-                                ele = ele + ',' +dishList[i].material[j];
-                            }
-                            ele = ele.substring(1,ele.length);
-                            materials.push.apply(materials,dishList[i].material);
-                            tdEle = document.createElement("td");
-                            tdEle.innerHTML = divStart + ele + divEnd;
-    
-                            trDish.appendChild(tdType);
-                            trDish.appendChild(tdNum);
-                            trDish.appendChild(tdName);
-                            trDish.appendChild(tdEle);
-                            document.getElementById('resultTbody').appendChild(trDish);
-                        }
-                        materials.deduplication();
-                        eles = "";
-                        for(var i = 0; i < materials.length;i++){
-                                eles = eles + ',' +materials[i];
-                        }
-                        eles = eles.substring(1,eles.length)
-                        divMaterials = document.createElement("div");
-                        divMaterials.innerHTML = eles;
-                        document.getElementById('materials').innerHTML = "";
-                        document.getElementById('materials').appendChild(divMaterials);
+                    var divEnd = '</div>'
+                    var tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerHTML = divStart + '分类' + divEnd;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = divStart + '编号' + divEnd;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = divStart + '名称' + divEnd;
+                    tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.innerHTML = divStart + '食材' + divEnd;
+                    tr.appendChild(td);
+                    document.getElementById('resultTbody').innerHTML = '';
+                    document.getElementById('resultTbody').appendChild(tr);
+                },
+                addResult(oneDish){
+                    var divStart = '<div>'
+                    var divEnd = '</div>'
+                    trDish = document.createElement("tr");
+                    tdType = document.createElement("td");
+                    if(oneDish.type === dishType.soup)
+                        tdType.innerHTML = divStart + '汤菜' + divEnd;
+                    else if(oneDish.type === dishType.stirfry)
+                        tdType.innerHTML = divStart + '炒菜' + divEnd;
+                    else if(oneDish.type === dishType.salad)
+                        tdType.innerHTML = divStart + '凉菜' + divEnd;
+                    else if (oneDish.type === dishType.steamed)
+                        tdType.innerHTML = divStart + '蒸菜' + divEnd;
+                    else
+                        tdType.innerHTML = '未知';
+                    tdNum = document.createElement("td");
+                    tdNum.innerHTML = divStart + oneDish.id + divEnd;
+
+                    tdName = document.createElement("td");
+                    tdName.innerHTML = divStart + oneDish.name + divEnd;
+
+                    var ele = "";
+                    for(var i = 0; i < oneDish.material.length;i++){
+                        ele = ele + ',' + oneDish.material[i];
+                    }
+                    ele = ele.substring(1,ele.length);
+                    materials.push.apply(materials,oneDish.material);
+                    tdEle = document.createElement("td");
+                    tdEle.innerHTML = divStart + ele + divEnd;
+
+                    trDish.appendChild(tdType);
+                    trDish.appendChild(tdNum);
+                    trDish.appendChild(tdName);
+                    trDish.appendChild(tdEle);
+                    document.getElementById('resultTbody').appendChild(trDish);
+                },
+                roll:function(){
+                    panalController.cleanResult();
+                    var divStart = '<div>'
+                    var divEnd = '</div>'
+                    var opts = {}
+                    opts.soup = document.getElementById("soup-select").selectedIndex;
+                    opts.stirfry = document.getElementById("stirfry-select").selectedIndex;
+                    opts.salad = document.getElementById("salad-select").selectedIndex;
+                    opts.steamed = document.getElementById("steamed-select").selectedIndex;
+                    results = data.getDishList(opts);
+                    dishList = [];
+                    for(result in results){
+                        dishList = results[result].reduce(reduceFun,dishList);
+                    }
+                    materials = [];
+                    for(var i=0;i<dishList.length;i++){
+                        panalController.addResult(dishList[i]);
+                    }
+                    materials.deduplication();
+                    eles = "";
+                    for(var i = 0; i < materials.length;i++){
+                            eles = eles + ',' +materials[i];
+                    }
+                    eles = eles.substring(1,eles.length)
+                    divMaterials = document.createElement("div");
+                    divMaterials.innerHTML = eles;
+                    document.getElementById('materials').innerHTML = "";
+                    document.getElementById('materials').appendChild(divMaterials);
                 },
                 mouseclick:{
                     rollClick:function(){
