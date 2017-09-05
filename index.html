@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <div><span>炒菜:</span><select name="stirfry-select" id="stirfry-select"></select><span>(盘)</span></div>
-                    <div><span>蒸菜</span><select name="steamed-select" id="steamed-select"></select><span>(盘)</span></div>
+                    <div><span>蒸菜:</span><select name="steamed-select" id="steamed-select"></select><span>(盘)</span></div>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <table id='resultTable'>
                     <tbody id='resultTbody'>
                         <tr>
-                            <td><div>分类</div></td><td><div>编号</div></td><td><div>名称</div></td><td><div>食材</div></td>
+                            <td><div name="title">分类</div></td><td><div name="title">编号</div></td><td><div name="title">名称</div></td><td><div name="title">食材</div></td>
                         </tr>
                     </tbody>
                 </table>
@@ -206,7 +206,15 @@
                         opt.value = i;
                         document.getElementById('steamed-select').appendChild(opt)
                     }
-                    
+                    var titles = document.getElementsByName("title");
+                    maxHeight  = 0;
+
+                    titles.forEach(function(item){
+                        if(item.parentNode.offsetHeight>maxHeight){
+                            maxHeight = item.parentNode.offsetHeight + 1;
+                        }
+                    },this);
+                    document.getElementById('resultDiv').style.cssText="height:" + (maxHeight).toString() + "px;";
                 },
                 addClass:function(obj, cls){
                     var obj_class = obj.className,
@@ -215,7 +223,7 @@
                     obj.className = added;
                 },
                 removeClass:function(obj, cls){
-                    var obj_class = ' '+obj.className+' ';
+                    var obj_class = ' '+ obj.className +' ';
                     obj_class = obj_class.replace(/(\s+)/gi, ' '),
                         removed = obj_class.replace(' '+cls+' ', ' ');
                     removed = removed.replace(/(^\s+)|(\s+$)/g, '');
@@ -241,6 +249,7 @@
                 },
                 unsetObjZoreHeight(obj){
                     panalController.addClass(obj,'transDiv');
+                    document.getElementById('resultDiv').className = 'heightAuto';
                     panalController.removeClass(obj,'zeroHeight');
                 },
                 heightTrans(obj){
@@ -254,7 +263,7 @@
                     }
                 },
                 cleanResult(){
-                    var divStart = '<div>'
+                    var divStart = '<div name=\"title\">'
                     var divEnd = '</div>'
                     var tr = document.createElement("tr");
                     var td = document.createElement("td");
@@ -325,6 +334,7 @@
                     trDish.appendChild(tdNum);
                     trDish.appendChild(tdName);
                     trDish.appendChild(tdEle);
+                    panalController.removeClass(document.getElementById('resultDiv'),'heightAuto')
                     document.getElementById('resultTbody').appendChild(trDish);
                     window.setTimeout(panalController.heightTrans.bind(null,divType),1);
                     window.setTimeout(panalController.heightTrans.bind(null,divNum),1);
@@ -407,6 +417,9 @@
                 height: 0px !important;
                 margin-top: 0px !important;
                 margin-bottom: 0px !important;
+            }
+            .heightAuto{
+                height: auto !important;
             }
             @media only screen and (min-width: 1025px){
                 input[type=button] {
@@ -507,6 +520,7 @@
                     width: 34%;
                     background-color: #ffffff;
                     color: #20b2aa;
+                    overflow: hidden;
                 }
                 #resultTable{
                     margin-left: 10%;
@@ -673,6 +687,7 @@
                     background-color: #ffffff;
                     color: #20b2aa;
                     font-size: 100%;
+                    overflow: hidden;
                 }
                 #resultTable{
                     margin-left: 10%;
@@ -680,6 +695,14 @@
                     border-collapse:collapse;
                     table-layout: fixed;
                     width: 80%;
+                }
+                #resultTable{
+                    margin-left: 10%;
+                    border-spacing: 0;
+                    border-collapse:collapse;
+                    table-layout: fixed;
+                    width: 80%;
+
                 }
                 #resultTable>tbody>tr{
                     width: 100%;
