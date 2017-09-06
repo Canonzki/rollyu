@@ -692,7 +692,10 @@
                     -ms-transform: translateX(0);
                     -o-transform: translateX(0);
                     transform: translateX(0);
-                    
+                    -webkit-transition: -webkit-margin 0.3s,-webkit-height 0.3s,-webkit-width 0.3s,-webkit-transform 0.3s;
+                    -moz-transition: -moz-margin 0.3s,-moz-height 0.3s,-moz-width 0.3s,-moz-transform 0.3s;
+                    transition: margin 0.3s,height 0.3s,width 0.3s,transform 0.3s;
+                    will-change: margin,height,width,transform;
                 }
                 .rollOver{
                     margin-bottom: 0px !important;
@@ -736,7 +739,6 @@
                     margin-left: 10%;
                     width: 80%;
                 }
-
             }
         </style>
     </body>
