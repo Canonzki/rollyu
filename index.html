@@ -8,11 +8,11 @@
         <div class="main-div">
             <input type="button" value="roll" name="" id="roll" onclick="panalController.mouseclick.rollClick()" onmouseover="panalController.mouseOver.rollOver()" onmouseout="panalController.mouseOut.rollOut()">
             <div class="count-count">
-                <div>
+                <div style="margin-left:10%">
                     <div><span>汤菜:&nbsp&nbsp</span><select name="soup-select" id="soup-select"></select><span>&nbsp&nbsp(碗)</span></div>
                     <div><span>凉菜:&nbsp&nbsp</span><select name="salad-select" id="salad-select"></select><span>&nbsp&nbsp(盘)</span></div>
                 </div>
-                <div style="text-align:right;">
+                <div style="float:right;margin-right:10%;text-align:right;">
                     <div><span>炒菜:&nbsp&nbsp</span><select name="stirfry-select" id="stirfry-select"></select><span>&nbsp&nbsp(盘)</span></div>
                     <div><span>蒸菜:&nbsp&nbsp</span><select name="steamed-select" id="steamed-select"></select><span>&nbsp&nbsp(盘)</span></div>
                 </div>
@@ -474,7 +474,6 @@
                 }
                 .count-count>div{
                     display:inline-block !important;
-                    margin-left: 10%;
                     width: 35%;
                 }
                 .count-count>div>div{
