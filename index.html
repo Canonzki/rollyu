@@ -12,7 +12,7 @@
                     <div><span>汤菜:&nbsp&nbsp</span><select name="soup-select" id="soup-select"></select><span>&nbsp&nbsp(碗)</span></div>
                     <div><span>凉菜:&nbsp&nbsp</span><select name="salad-select" id="salad-select"></select><span>&nbsp&nbsp(盘)</span></div>
                 </div>
-                <div style="margin-right:10%;text-align:right">
+                <div style="margin-right:10%;">
                     <div><span>炒菜:&nbsp&nbsp</span><select name="stirfry-select" id="stirfry-select"></select><span>&nbsp&nbsp(盘)</span></div>
                     <div><span>蒸菜:&nbsp&nbsp</span><select name="steamed-select" id="steamed-select"></select><span>&nbsp&nbsp(盘)</span></div>
                 </div>
@@ -447,6 +447,9 @@
                 background-color: #20b2aa;
                 text-align:center
             }
+            .main-div{
+                background-color: #20b2aa;
+            }
             .zeroHeight{
                 height: 0px !important;
                 margin-top: 0px !important;
@@ -454,6 +457,47 @@
             }
             .heightAuto{
                 height: auto !important;
+            }
+            #resultTable{
+                margin-left: 10%;
+                border-spacing: 0;
+                border-collapse:collapse;
+                table-layout: fixed;
+                width: 80%;
+            }
+            #resultTable>tbody>tr{
+                width: 100%;
+            }
+            #resultTable>tbody>tr:nth-child(1){
+                border-bottom: solid 1px #20b2aa;
+                table-layout: fixed !important;
+            }
+            #resultTable>tbody>tr:last-child{
+                border-bottom: solid 1px #20b2aa;
+
+            }
+            #resultTable>tbody>tr:last-child>td{
+                width: 100% !important;
+                table-layout: auto;
+            }
+            #resultTable>tbody>tr:last-child>td>div{
+                width: 100% !important;
+            }
+            #resultTable>tbody>tr>td{
+                width: 25%;
+                text-align: center;
+                vertical-align:middle;
+                display:table-cell; 
+            }
+            #resultTable>tbody>tr>td>div{
+                margin-top: 8%;
+                margin-bottom: 8%;
+                overflow: hidden;
+            }
+            .buttonOver{
+                -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
+                box-shadow: 3px 3px 3px rgba(0,0,0,.4);
             }
             #githuburl{
                 color: #FFFFFF;
@@ -464,14 +508,6 @@
                     cursor: pointer;
                     -moz-appearance:button; /* Firefox */
                     -webkit-appearance:button; /* Safari 和 Chrome */
-                }
-                .main-div{
-                    background-color: #20b2aa;
-                }
-                .buttonOver{
-                    -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                    -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                    box-shadow: 3px 3px 3px rgba(0,0,0,.4);
                 }
                 .count-count{
                     margin-left: 33%;
@@ -559,42 +595,7 @@
                     color: #20b2aa;
                     overflow: hidden;
                 }
-                #resultTable{
-                    margin-left: 10%;
-                    border-spacing: 0;
-                    border-collapse:collapse;
-                    table-layout: fixed;
-                    width: 80%;
-                }
-                #resultTable>tbody>tr{
-                    width: 100%;
-                }
-                #resultTable>tbody>tr:nth-child(1){
-                    border-bottom: solid 1px #20b2aa;
-                    table-layout: fixed !important;
-                }
-                #resultTable>tbody>tr:last-child{
-                    border-bottom: solid 1px #20b2aa;
 
-                }
-                #resultTable>tbody>tr:last-child>td{
-                    width: 100% !important;
-                    table-layout: auto;
-                }
-                #resultTable>tbody>tr:last-child>td>div{
-                    width: 100% !important;
-                }
-                #resultTable>tbody>tr>td{
-                    width: 25%;
-                    text-align: center;
-                    vertical-align:middle;
-                    display:table-cell; 
-                }
-                #resultTable>tbody>tr>td>div{
-                    margin-top: 8%;
-                    margin-bottom: 8%;
-                    overflow: hidden;
-                }
                 #resultTable>tbody>tr>td>div.transDiv{
                     -webkit-transform: translateX(0);
                     -moz-transform: translateX(0);
@@ -625,14 +626,6 @@
                     -webkit-appearance:none; /* Safari 和 Chrome */
                     border-radius: 0;
                 }
-                .main-div{
-                    background-color: #20b2aa;
-                }
-                .buttonOver{
-                    -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                    -moz-box-shadow: 3px 3px 3px rgba(0,0,0,.4);  
-                    box-shadow: 3px 3px 3px rgba(0,0,0,.4);
-                }
                 .count-count{
                     margin-left: 3%;
                     width: 94%;
@@ -651,13 +644,13 @@
                     color: #20b2aa;
                 }
                 .count-count>div>div>select{
+                    padding-left: 1%;
                     cursor: pointer;
                     text-align: center;  
                     -moz-appearance:select; /* Firefox */
                     -webkit-appearance:select; /* Safari 和 Chrome */
                     display:inline;
                     width: auto;
-                    height: 1%;
                     border: solid 1px #20b2aa;
                     color: #20b2aa;
                     border-radius: 0;
@@ -699,10 +692,7 @@
                     -ms-transform: translateX(0);
                     -o-transform: translateX(0);
                     transform: translateX(0);
-                    -webkit-transition: -webkit-margin 0.3s,-webkit-height 0.3s,-webkit-width 0.3s,-webkit-transform 0.3s;
-                    -moz-transition: -moz-margin 0.3s,-moz-height 0.3s,-moz-width 0.3s,-moz-transform 0.3s;
-                    transition: margin 0.3s,height 0.3s,width 0.3s,transform 0.3s;
-                    will-change: margin,height,width,transform;
+                    
                 }
                 .rollOver{
                     margin-bottom: 0px !important;
@@ -721,50 +711,6 @@
                     background-color: #ffffff;
                     color: #20b2aa;
                     font-size: 100%;
-                    overflow: hidden;
-                }
-                #resultTable{
-                    margin-left: 10%;
-                    border-spacing: 0;
-                    border-collapse:collapse;
-                    table-layout: fixed;
-                    width: 80%;
-                }
-                #resultTable{
-                    margin-left: 10%;
-                    border-spacing: 0;
-                    border-collapse:collapse;
-                    table-layout: fixed;
-                    width: 80%;
-
-                }
-                #resultTable>tbody>tr{
-                    width: 100%;
-                }
-                #resultTable>tbody>tr:nth-child(1){
-                    border-bottom: solid 1px #20b2aa;
-                    table-layout: fixed !important;
-                }
-                #resultTable>tbody>tr:last-child{
-                    border-bottom: solid 1px #20b2aa;
-
-                }
-                #resultTable>tbody>tr:last-child>td{
-                    width: 100% !important;
-                    table-layout: auto;
-                }
-                #resultTable>tbody>tr:last-child>td>div{
-                    width: 100% !important;
-                }
-                #resultTable>tbody>tr>td{
-                    width: 25%;
-                    text-align: center;
-                    vertical-align:middle;
-                    display:table-cell; 
-                }
-                #resultTable>tbody>tr>td>div{
-                    margin-top: 8%;
-                    margin-bottom: 8%;
                     overflow: hidden;
                 }
                 #resultTable>tbody>tr>td>div.transDiv{
